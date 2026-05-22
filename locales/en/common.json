@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "contact": "Contact",
+    "login": "Sign in",
+    "register": "Start free"
+  },
+  "hero": {
+    "badge": "Ascendant 3 Peak · IGL · Elite 5 Champion",
+    "title_1": "ELEVATE YOUR",
+    "title_2": "LEVEL",
+    "title_3": "IN VALORANT",
+    "subtitle": "Premium coaching with 5 years of competitive experience.",
+    "cta_primary": "First session free",
+    "cta_secondary": "See pricing"
+  },
+  "pricing": {
+    "free_label": "First Session",
+    "single_label": "Single Session",
+    "monthly_label": "Monthly Coaching"
+  }
+}

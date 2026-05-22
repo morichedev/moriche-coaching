@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 0 84% 60%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 0 84% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 12%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 84% 45%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 84% 45%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { @apply scroll-smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection { @apply bg-crimson-600/30 text-foreground; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-charcoal-800; }
+  ::-webkit-scrollbar-thumb { @apply bg-gunmetal-700 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-crimson-700; }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-xl;
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-white/[0.05] hover:border-white/[0.10];
+  }
+
+  /* Crimson glow button */
+  .btn-crimson {
+    @apply relative overflow-hidden bg-crimson-600 hover:bg-crimson-500 text-white font-semibold
+           px-6 py-3 rounded-lg transition-all duration-300
+           shadow-crimson hover:shadow-crimson hover:scale-[1.02]
+           before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/0
+           before:via-white/10 before:to-white/0 before:translate-x-[-100%]
+           hover:before:translate-x-[100%] before:transition-transform before:duration-700;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply relative border border-white/20 hover:border-crimson-600/60 text-foreground
+           hover:text-crimson-400 font-semibold px-6 py-3 rounded-lg
+           transition-all duration-300 hover:bg-crimson-950/20;
+  }
+
+  /* Rank badge */
+  .rank-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold
+           border capitalize;
+  }
+
+  /* Animated grid background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Scan line animation */
+  .scan-overlay::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(220, 38, 38, 0.02) 50%,
+      transparent 60%
+    );
+    animation: scan-line 4s linear infinite;
+  }
+
+  /* Neon text */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 40px rgba(220, 38, 38, 0.4);
+  }
+  .text-glow-subtle {
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+  }
+
+  /* Dashboard sidebar item */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+           text-muted-foreground hover:text-foreground hover:bg-white/[0.05]
+           transition-all duration-200 cursor-pointer;
+  }
+  .sidebar-item.active {
+    @apply text-foreground bg-crimson-950/40 border border-crimson-800/30;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-white/[0.06] rounded-md;
+  }
+
+  /* Premium label */
+  .premium-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold
+           bg-gradient-to-r from-amber-500 to-amber-600 text-black;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
+  }
+  .text-gradient-crimson {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-crimson-400 to-crimson-600;
+  }
+  .border-gradient {
+    border-image: linear-gradient(135deg, rgba(220,38,38,0.5), rgba(255,255,255,0.1)) 1;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* FullCalendar dark theme overrides */
+.fc {
+  --fc-border-color: rgba(255,255,255,0.08);
+  --fc-button-bg-color: rgba(255,255,255,0.05);
+  --fc-button-border-color: rgba(255,255,255,0.12);
+  --fc-button-hover-bg-color: rgba(220,38,38,0.2);
+  --fc-button-hover-border-color: rgba(220,38,38,0.4);
+  --fc-button-active-bg-color: rgba(220,38,38,0.3);
+  --fc-today-bg-color: rgba(220,38,38,0.08);
+  --fc-neutral-bg-color: rgba(255,255,255,0.02);
+  --fc-page-bg-color: transparent;
+  --fc-event-bg-color: #dc2626;
+  --fc-event-border-color: #b91c1c;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.875rem;
+}
+.fc .fc-toolbar-title { font-family: var(--font-rajdhani); font-weight: 700; font-size: 1.25rem; }
+.fc .fc-button { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; border-radius: 6px !important; }
+.fc .fc-daygrid-day-number { color: rgba(255,255,255,0.6); }
+.fc .fc-col-header-cell-cushion { color: rgba(255,255,255,0.4); font-weight: 600; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
