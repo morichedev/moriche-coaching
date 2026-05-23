@@ -3,7 +3,7 @@
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Clock, Tag } from 'lucide-react'
+import { ArrowRight, Clock } from 'lucide-react'
 
 const posts = [
   { slug: 'como-subir-de-rango-guia-completa', title: 'Cómo subir de rango en Valorant: la guía definitiva', excerpt: 'Estrategias probadas, mentalidad competitiva y rutinas de entrenamiento para maximizar tu progreso ranking.', category: 'Guías', readTime: 8, date: '15 Ene 2025' },

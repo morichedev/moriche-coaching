@@ -75,7 +75,7 @@ export function PlayerSessionsPage({ sessions, bookings, userId }: { sessions: S
                           <span className="capitalize">{session.session_type.replace('_', ' ')}</span>
                           {session.is_free_trial && <span className="px-1.5 py-0.5 rounded bg-emerald-950/40 text-emerald-400 border border-emerald-800/30 text-[10px] font-semibold">GRATIS</span>}
                         </div>
-                        {session.feedback && <p className="mt-2 text-sm text-muted-foreground line-clamp-2 italic">"{session.feedback}"</p>}
+                        {session.feedback && <p className="mt-2 text-sm text-muted-foreground line-clamp-2 italic">&quot;{session.feedback}&quot;</p>}
                       </div>
                     </div>
                     <div className="shrink-0 flex items-center gap-2">

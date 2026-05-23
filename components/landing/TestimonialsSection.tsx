@@ -57,7 +57,7 @@ export function TestimonialsSection() {
                 ))}
               </div>
               <blockquote className="text-lg text-foreground/90 leading-relaxed mb-8 italic">
-                "{t.content}"
+                &ldquo;{t.content}&rdquo;
               </blockquote>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">

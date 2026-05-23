@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, TrendingUp, Target, BookOpen, Video, Bell, Zap, ArrowRight } from 'lucide-react'
+import { Calendar, TrendingUp, Target, BookOpen, Zap, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { formatDate, RANK_COLORS, RANK_LABELS, cn } from '@/lib/utils'
 import type { Profile, Session, PlayerRoutine, Analytics, Goal, Notification } from '@/types/database'
@@ -16,7 +16,7 @@ interface Props {
   notifications: Notification[]
 }
 
-export function PlayerDashboardHome({ profile, sessions, routines, analytics, goals, notifications }: Props) {
+export function PlayerDashboardHome({ profile, sessions, routines, analytics, goals, notifications: _notifications }: Props) {
   const nextSession = sessions.find(s => s.status === 'scheduled')
   const chartData = analytics.slice().reverse().slice(-14).map(a => ({
     date: a.recorded_at,

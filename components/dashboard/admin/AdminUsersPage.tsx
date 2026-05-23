@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Users, Search, Shield, User, Trash2, Edit } from 'lucide-react'
+import { Search, Edit } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from '@/hooks/use-toast'
 import { formatDate, RANK_COLORS, RANK_LABELS, cn } from '@/lib/utils'

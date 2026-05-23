@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar, Check, X, Video, Plus, Clock } from 'lucide-react'
+import { Check, X, Video, Plus, Clock } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from '@/hooks/use-toast'
 import { formatDate, cn } from '@/lib/utils'
@@ -95,7 +95,7 @@ export function AdminSessionsPage({ bookings: initial, sessions: initial2, coach
                     <p className="text-sm text-muted-foreground mt-0.5 flex items-center gap-1">
                       <Clock className="w-3 h-3" />{formatDate(booking.scheduled_at, "d 'de' MMMM 'a las' HH:mm")} · <span className="capitalize">{booking.session_type.replace('_',' ')}</span>
                     </p>
-                    {booking.notes && <p className="text-xs text-muted-foreground mt-1 italic">"{booking.notes}"</p>}
+                    {booking.notes && <p className="text-xs text-muted-foreground mt-1 italic">&quot;{booking.notes}&quot;</p>}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <span className={cn('px-2.5 py-1 rounded-md text-xs font-semibold border',

@@ -22,11 +22,11 @@ const schema = z.object({
 })
 type FormData = z.infer<typeof schema>
 
-export function PlayerMetricsPage({ analytics, profile, userId }: { analytics: Analytics[], profile: Profile | null, userId: string }) {
+export function PlayerMetricsPage({ analytics, profile: _profile, userId }: { analytics: Analytics[], profile: Profile | null, userId: string }) {
   const [showForm, setShowForm] = useState(false)
   const [data, setData] = useState(analytics)
   const supabase = createClient()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues: { recorded_at: new Date().toISOString().slice(0,10), matches_played: 0, wins: 0, rr: 0 } })
+  const { register, handleSubmit, reset } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues: { recorded_at: new Date().toISOString().slice(0,10), matches_played: 0, wins: 0, rr: 0 } })
 
   const onSubmit = async (form: FormData) => {
     const { data: inserted, error } = await supabase.from('analytics').upsert({ ...form, user_id: userId }).select().single()

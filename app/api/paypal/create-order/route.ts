@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     const order = await res.json()
     return NextResponse.json({ id: order.id })
-  } catch (err) {
+  } catch (_err) {
     return NextResponse.json({ error: 'PayPal order failed' }, { status: 500 })
   }
 }

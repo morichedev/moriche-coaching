@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Map, Plus, Swords, Eye, Edit, Filter } from 'lucide-react'
+import { Map, Plus, Eye, Edit } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from '@/hooks/use-toast'
 import { VALORANT_MAPS, cn } from '@/lib/utils'

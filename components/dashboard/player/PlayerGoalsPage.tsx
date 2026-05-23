@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Target, Plus, CheckCircle, Calendar, Trophy, X } from 'lucide-react'
+import { Target, Plus, CheckCircle, Calendar, Trophy } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'

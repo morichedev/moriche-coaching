@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Calendar, Video, BookOpen, Target, TrendingUp, Settings, LogOut, LayoutDashboard, X } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Search, Calendar, Video, BookOpen, Target, TrendingUp, Settings, LayoutDashboard, X } from 'lucide-react'
 import { useUIStore } from '@/store/ui'
 import { cn } from '@/lib/utils'
 
@@ -72,7 +72,7 @@ export function CommandPalette() {
         </div>
         <div className="max-h-80 overflow-y-auto p-2">
           {filtered.length === 0 ? (
-            <p className="text-center text-muted-foreground text-sm py-8">Sin resultados para "{query}"</p>
+            <p className="text-center text-muted-foreground text-sm py-8">Sin resultados para &quot;{query}&quot;</p>
           ) : (
             filtered.map((cmd, i) => (
               <button

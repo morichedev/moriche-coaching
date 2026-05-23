@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { createServerSupabaseClient } from "@/lib/supabase/server"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
@@ -53,7 +54,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
           {post.cover_url && (
             <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-charcoal-700 mb-10">
-              <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
+              <Image src={post.cover_url} alt={post.title} fill className="object-cover" />
             </div>
           )}
           <div className="prose prose-invert prose-crimson max-w-none">

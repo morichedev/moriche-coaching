@@ -2,7 +2,7 @@
 
 import { Bell, MessageCircle, Search, Menu } from 'lucide-react'
 import { useUIStore } from '@/store/ui'
-import { getInitials, cn } from '@/lib/utils'
+import { getInitials } from '@/lib/utils'
 import type { Profile } from '@/types/database'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
