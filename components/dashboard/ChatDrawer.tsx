@@ -25,7 +25,7 @@ export function ChatDrawer() {
       .from('conversation_participants')
       .select('conversation:conversations(*)')
       .eq('user_id', profile.id)
-      .then(({ data }) => setConversations((data?.map(d => d.conversation).filter(Boolean) ?? []) as Conversation[]))
+      .then(({ data }) => setConversations((data?.map(d => d.conversation).filter(Boolean) ?? []) as unknown as Conversation[]))
   }, [profile, supabase])
 
   useEffect(() => {
