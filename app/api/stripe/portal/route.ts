@@ -23,7 +23,7 @@ export async function POST() {
     })
 
     return NextResponse.json({ url: session.url })
-  } catch (_err) {
+  } catch {
     return NextResponse.json({ error: 'Portal error' }, { status: 500 })
   }
 }

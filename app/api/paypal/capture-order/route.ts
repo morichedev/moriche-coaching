@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ status: 'success', capture })
-  } catch (_err) {
+  } catch {
     return NextResponse.json({ error: 'Capture failed' }, { status: 500 })
   }
 }
