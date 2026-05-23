@@ -84,7 +84,8 @@ export function AdminSessionsPage({ bookings: initial, sessions: initial2, coach
           {bookings.length === 0 ? (
             <div className="glass-card p-12 text-center"><p className="text-muted-foreground">No hay reservas.</p></div>
           ) : (
-            bookings.map((booking: Booking & { user?: { full_name?: string; email?: string; rank?: string } }, i) => (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (bookings as any[]).map((booking, i) => (
               <motion.div key={booking.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="glass-card p-5">
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0 flex-1">
@@ -117,7 +118,8 @@ export function AdminSessionsPage({ bookings: initial, sessions: initial2, coach
         </div>
       ) : (
         <div className="space-y-3">
-          {sessions.map((session: Session & { player?: { full_name?: string; email?: string } }, i) => (
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {(sessions as any[]).map((session, i) => (
             <motion.div key={session.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="glass-card p-5">
               <div className="flex items-center justify-between gap-4">
                 <div>
