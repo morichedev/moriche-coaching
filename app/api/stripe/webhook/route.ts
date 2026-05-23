@@ -80,7 +80,10 @@ export async function POST(req: NextRequest) {
 
     case 'invoice.payment_failed': {
       const invoice = event.data.object as Stripe.Invoice
-      const userId = (invoice.customer_object as Stripe.Customer)?.metadata?.supabase_uid
+      const customer = invoice.customer
+        ? await stripe.customers.retrieve(invoice.customer as string).catch(() => null) as Stripe.Customer | null
+        : null
+      const userId = customer?.metadata?.supabase_uid
       if (userId) {
         await supabase.from('notifications').insert({
           user_id: userId, type: 'payment', title: 'Pago fallido',
