@@ -2,9 +2,8 @@ import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServerSupabaseClient, createServiceSupabaseClient } from '@/lib/supabase/server'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2025-02-24.acacia' })
-
 export async function POST() {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2025-02-24.acacia' })
   try {
     const supabase = await createServerSupabaseClient()
     const { data: { user } } = await supabase.auth.getUser()
